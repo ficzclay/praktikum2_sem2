@@ -314,4 +314,4 @@ Dalam DML, pengguna dapat menggunakan perintah SQL (Structured Query Language) u
 
 **Buat laporan praktikum yang berisi, langkah-langkah praktikum beserta screenshot yang sudah dilakukan dalam bentuk dokumen.**
 
-- [Link Laporan Praktikum]()
+- [Link Laporan Praktikum](https://docs.google.com/document/d/1nHywILCUdN_HZzEm4gXNy95J9cKsmGijGfMpgqcQ7kA/edit?usp=sharing)
