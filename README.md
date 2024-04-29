@@ -21,7 +21,33 @@ KRSMahasiswa (nim, kd_mk, kd_ds, semester, nilai)
 
 **Langkah-langkahnya :**
 
-**1. Buat dulu script untuk table Dosen agar tidak menimbulkan error pada saat menginput table Mahasiswa :**
+**1. Buat dulu script untuk table Mahasiswa :**
+
+```
+create table Mahasiswa (
+    nim varchar(10) PRIMARY KEY,
+    nama varchar(25) NOT NULL,
+    jenis_kelamin ENUM('Laki-Laki', 'Perempuan'),
+    tgl_lahir DATE,
+    jalan varchar(15) NOT NULL,
+    kota varchar(15) NOT NULL,
+    kodepos varchar(5) NOT NULL,
+    no_hp varchar(15) NOT NULL,
+    kd_ds varchar(10) NOT NULL,
+    FOREIGN KEY (kd_ds) REFERENCES Dosen(kd_ds)
+    );
+```
+
+![alt text](img/1.png)
+
+**Tampilkan hasil table :**
+
+```
+desc Mahasiswa;
+```
+![alt text](img/2.png)
+
+**2. Buat script untuk table Dosen :**
 
 ```
 create table Dosen (
@@ -30,34 +56,15 @@ create table Dosen (
     );
 ```
 
-**Tampilkan hasil table :**
-
-```
-desc Mahasiswa;
-```
-
-**2. Buat script untuk table Mahasiswa :**
-
-```
-create table Mahasiswa (
-nim varchar(10) PRIMARY KEY,
-nama varchar(25) NOT NULL,
-jenis_kelamin ENUM('Laki-Laki', 'Perempuan'),
-tgl_lahir DATE,
-jalan varchar(15) NOT NULL,
-kota varchar(15) NOT NULL,
-kodepos varchar(5) NOT NULL,
-no_hp varchar(15) NOT NULL,
-kd_ds varchar(10) NOT NULL,
-FOREIGN KEY (kd_ds) REFERENCES Dosen(kd_ds)
-);
-```
+![alt text](img/3.png)
 
 **Tampilkan tabel :**
 
 ```
-desc Dosen;
+desc Dosen;;
 ```
+
+![alt text](img/4.png)
 
 **3. Buat script untuk Matakuliah :**
 
@@ -69,11 +76,15 @@ create table Matakuliah (
     );
 ```
 
+![alt text](img/5.png)
+
 **Tampilkan table :**
 
 ```
 desc Matakuliah;
 ```
+
+![alt text](img/6.png)
 
 **4. Buat script untuk jadwalMengajar :**
 
@@ -90,11 +101,16 @@ create table JadwalMengajar (
     );
 ```
 
+![alt text](img/7.png)
+
 **Tampilkan table :**
 
 ```
 desc JadwalMengajar;
 ```
+
+![alt text](img/8.png)
+
 
 **5. Buat script untuk KRSMahasiswa :**
 
@@ -112,11 +128,15 @@ CREATE TABLE KRSMahasiswa (
     );
 ```
 
+![alt text](img/9.png)
+
 **Tampilkan table :**
 
 ```
 desc KRSMahasiswa;
 ```
+
+![alt text](img/10.png)
 
 ## Tugas Praktikum
 
@@ -146,9 +166,14 @@ insert into Mahasiswa (nim, nama, jenis_kelamin, tgl_lahir, jalan, kota, kodepos
     (11223349,"Anton Sinaga","Laki-Laki","1988-03-10","","Cikarang","","","");
 ```
 
+![alt text](img/11.png)
+
 **2. Menampilkan semua isi/record pada tabel bisa menggunakan kode berikut :**
 
 select\*from Mahasiswa;
+
+![alt text](img/12.png)
+
 
 **3. Mengubah data tanggal lahir Mahasiswa yang bernama Ari menjadi : 1979-08-31 menggunakan kode berikut :**
 
@@ -156,11 +181,15 @@ select\*from Mahasiswa;
 update Mahasiswa set tgl_lahir='1979-08-31' where nim=11223344;
 ```
 
+![alt text](img/13.png)
+
 **4. Menampilkan satu baris / record data yang telah diubah tadi yaitu record dengan nama Ari saja dengan cara sebagai berikut :**
 
 ```
 select*from Mahasiswa where nim=11223344;
 ```
+
+![alt text](img/14.png)
 
 **5. Menghapus Mahasiswa yang bernama Dina dengan cara sebagai berikut:**
 
@@ -168,17 +197,24 @@ select*from Mahasiswa where nim=11223344;
 delete from Mahasiswa where nim=11223346;
 ```
 
+![alt text](img/15.png)
+
+
 **6. Menampilkan record atau data yang tanggal kelahirannya lebih dari atau sama dengan 1996-1-2 dengan cara sebagai berikut :**
 
 ```
 select*from Mahasiswa where tgl_lahir<='1996-1-2';
 ```
 
+![alt text](img/16.png)
+
 **7. Menampilkan semua Mahasiswa yang berasal dari Bekasi dan berjenis kelamin perempuan dengan cara sebagai berikut :**
 
 ```
 select*from Mahasiswa where kota='bekasi' and jenis_kelamin='Perempuan';
 ```
+
+![alt text](img/17.png)
 
 **8. Menampilkan semua Mahasiswa yang berasal dari Bekasi dengan kelamin laki-laki atau Mahasiswa yang berumur lebih dari 22 tahun dengan kelamin wanita dengan cara sebagai berikut :**
 
@@ -188,17 +224,23 @@ or tgl_lahir<='2002-4-22'
 and jenis_kelamin='Perempuan';
 ```
 
+![alt text](img/18.png)
+
 **9. Menampilkan data nama dan jalan Mahasiswa saja dari tabel tersebut dengan cara sebagai berikut :**
 
 ```
 select nama, jalan from Mahasiswa;
 ```
 
+![alt text](img/19.png)
+
 **10. Menampilkan data Mahasiswa terurut berdasarkan nama dengan cara sebagai berikut :**
 
 ```
 select*from Mahasiswa -> order by nama asc;
 ```
+
+![alt text](img/20.png)
 
 ## Evaluasi dan Pertanyaan
 
@@ -216,6 +258,8 @@ Contoh :
 INSERT INTO biodata (nim, nama, alamat) VALUE ('8247','Diluc','Mondstadt');
 ```
 
+![alt text](img/21.png)
+
 **2. Menampilkan data :**
 
 `SELECT * FROM <table> SELECT [field1, ..., fieldn] FROM <table>`
@@ -225,6 +269,8 @@ Contoh :
 ```
 SELECT*FROM biodata;
 ```
+
+![alt text](img/22.png)
 
 **3. Mengubah data :**
 
@@ -236,6 +282,8 @@ Contoh :
 UPDATE biodata SET Nama='Denta', Alamat='Liyue' WHERE Nim='8247';
 ```
 
+![alt text](img/23.png)
+
 **4. Menghapus data :**
 
 DELETE FROM <table> WHERE <kondisi>
@@ -245,6 +293,8 @@ Contoh :
 ```
 DELETE FROM biodata WHERE nim='8247';
 ```
+
+![alt text](img/24.png)
 
 **Apa bedanya penggunaan BETWEEN dan penggunaan operator >= dan <= ?**
 
